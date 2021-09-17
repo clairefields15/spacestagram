@@ -24,6 +24,10 @@ export const App = () => {
     getPhotos();
   }, []);
 
+  const handleLike = id => {
+    console.log('hi', id);
+  };
+
   return (
     <main>
       <header>
@@ -33,7 +37,11 @@ export const App = () => {
       {!errorMessage && loading && <p>Loading photos...</p>}
       {!errorMessage && !loading && (
         <Switch>
-          <Route exact path='/' render={() => <Cards photos={photos} />} />
+          <Route
+            exact
+            path='/'
+            render={() => <Cards photos={photos} handleLike={handleLike} />}
+          />
           <Route render={() => <p>Sorry that page doesn't exist</p>} />
         </Switch>
       )}
