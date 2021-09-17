@@ -1,0 +1,11 @@
+.card-container {
+  border: 1px solid blue;
+  min-height: 50vh;
+}
+
+.card-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  overflow: hidden;
+}
