@@ -1,11 +1,13 @@
 import React from 'react';
 import './Card.css';
 
-export const Card = ({ photo, handleLike }) => {
+export const Card = ({ photo, handleLike, liked }) => {
   const handleClick = e => {
+    e.preventDefault();
     const id = e.target.closest('article').id;
     handleLike(id);
   };
+
   return (
     <article className='card-container' id={photo.url}>
       {photo.hdurl ? (
@@ -17,7 +19,8 @@ export const Card = ({ photo, handleLike }) => {
       <p>{photo.date}</p>
       {photo.copyright && <p>Photo by: {photo.copyright}</p>}{' '}
       <p>{photo.explanation}</p>
-      <button onClick={e => handleClick(e)}>Like</button>
+      {!liked && <button onClick={e => handleClick(e)}>Like</button>}{' '}
+      {liked && <button onClick={e => handleClick(e)}>Dislike</button>}
     </article>
   );
 };
