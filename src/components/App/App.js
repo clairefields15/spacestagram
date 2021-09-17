@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/apiCalls';
+import { Cards } from '../Cards/Cards';
 import './App.css';
 
 export const App = () => {
@@ -23,9 +24,17 @@ export const App = () => {
   }, []);
 
   return (
-    <Switch>
-      <Route exact path='/' render={() => <h1>Hello</h1>} />
-      <Route render={() => <p>Sorry that page doesn't exist</p>} />
-    </Switch>
+    <main>
+      <header>
+        <h1>spacestagram</h1>
+      </header>
+      {loading && <p>Loading photos...</p>}
+      {!loading && (
+        <Switch>
+          <Route exact path='/' render={() => <Cards photos={photos} />} />
+          <Route render={() => <p>Sorry that page doesn't exist</p>} />
+        </Switch>
+      )}
+    </main>
   );
 };
