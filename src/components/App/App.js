@@ -9,6 +9,7 @@ export const App = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [liked, setLiked] = useState([]);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -25,7 +26,12 @@ export const App = () => {
   }, []);
 
   const handleLike = id => {
-    console.log('hi', id);
+    if (!liked.includes(id)) {
+      return setLiked([...liked, id]);
+    } else {
+      let newLikes = liked.filter(like => like !== id);
+      return setLiked(newLikes);
+    }
   };
 
   return (
@@ -40,7 +46,9 @@ export const App = () => {
           <Route
             exact
             path='/'
-            render={() => <Cards photos={photos} handleLike={handleLike} />}
+            render={() => (
+              <Cards photos={photos} handleLike={handleLike} liked={liked} />
+            )}
           />
           <Route render={() => <p>Sorry that page doesn't exist</p>} />
         </Switch>
