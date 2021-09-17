@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/apiCalls';
 import { Cards } from '../Cards/Cards';
+import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import './App.css';
 
 export const App = () => {
@@ -28,8 +29,9 @@ export const App = () => {
       <header>
         <h1>spacestagram</h1>
       </header>
-      {loading && <p>Loading photos...</p>}
-      {!loading && (
+      {!!errorMessage && <ErrorComponent message={errorMessage} />}
+      {!errorMessage && loading && <p>Loading photos...</p>}
+      {!errorMessage && !loading && (
         <Switch>
           <Route exact path='/' render={() => <Cards photos={photos} />} />
           <Route render={() => <p>Sorry that page doesn't exist</p>} />
