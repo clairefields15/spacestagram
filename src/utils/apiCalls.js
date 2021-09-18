@@ -1,10 +1,12 @@
 export const fetchPhotos = async () => {
   const key = process.env.REACT_APP_API_KEY;
-  const count = 10;
+
+  const count = 20;
   let response = await fetch(
     `https://api.nasa.gov/planetary/apod?api_key=${key}&count=${count}`
   );
-  return await checkForErrors(response);
+  let data = await checkForErrors(response);
+  return await cleanData(data);
 };
 
 const checkForErrors = response => {
@@ -17,4 +19,8 @@ const checkForErrors = response => {
   } else {
     throw new Error('Something went wrong');
   }
+};
+
+const cleanData = data => {
+  return data.filter(image => image['media_type'] === 'image');
 };

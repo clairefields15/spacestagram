@@ -10,11 +10,7 @@ export const Card = ({ photo, handleLike, liked }) => {
 
   return (
     <article className='card-container' id={photo.url}>
-      {photo.hdurl ? (
-        <img src={photo.hdurl} alt={photo.explanation} />
-      ) : (
-        <img src={photo.url} alt={photo.explanation} />
-      )}
+      {photo.hdurl && <img src={photo.hdurl} alt={photo.explanation} />}
       <h3>{photo.title}</h3>
       <p>{photo.date}</p>
       {photo.copyright && <p>Photo by: {photo.copyright}</p>}{' '}
