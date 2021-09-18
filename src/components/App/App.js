@@ -9,6 +9,7 @@ export const App = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [liked, setLiked] = useState([]);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -24,6 +25,15 @@ export const App = () => {
     getPhotos();
   }, []);
 
+  const handleLike = id => {
+    if (!liked.includes(id)) {
+      return setLiked([...liked, id]);
+    } else {
+      let newLikes = liked.filter(like => like !== id);
+      return setLiked(newLikes);
+    }
+  };
+
   return (
     <main>
       <header>
@@ -33,7 +43,13 @@ export const App = () => {
       {!errorMessage && loading && <p>Loading photos...</p>}
       {!errorMessage && !loading && (
         <Switch>
-          <Route exact path='/' render={() => <Cards photos={photos} />} />
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Cards photos={photos} handleLike={handleLike} liked={liked} />
+            )}
+          />
           <Route render={() => <p>Sorry that page doesn't exist</p>} />
         </Switch>
       )}
