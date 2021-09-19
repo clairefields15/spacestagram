@@ -46,7 +46,7 @@
 .more-button {
   background-color: inherit;
   border: none;
-  color: grey;
+  color: #303030;
 }
 
 @media screen and (min-width: 480px) {

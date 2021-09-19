@@ -20,12 +20,16 @@ export const Card = ({ photo, handleLike, liked }) => {
     <article className='card-container' id={photo.url}>
       {photo.hdurl && (
         <div className='fluid-square'>
-          <img src={photo.hdurl} alt={photo.explanation} />
+          <img src={photo.hdurl} alt={photo.title} />
         </div>
       )}
       <div className='text-container'>
         {!liked && (
-          <button className='like-heart' onClick={e => handleClick(e)}>
+          <button
+            className='like-heart'
+            onClick={e => handleClick(e)}
+            aria-label='Click to like post'
+          >
             <i class='far fa-heart'></i>
           </button>
         )}
@@ -35,12 +39,13 @@ export const Card = ({ photo, handleLike, liked }) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             onClick={e => handleClick(e)}
+            aria-label='Click to unlike post'
           >
             {!hover && <i class='fas fa-heart'></i>}{' '}
             {hover && <i class='fas fa-heart-broken'></i>}
           </button>
         )}
-        <h3>{photo.title}</h3>
+        <h2>{photo.title}</h2>
         <p>{photo.date}</p>
         {photo.copyright && <p>Photo by: {photo.copyright}</p>}
         <p>
