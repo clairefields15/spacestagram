@@ -20,3 +20,9 @@ h1 {
   background-image: url('../../images/space.jpg');
   background-position: bottom 10em left -5em;
 }
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2.75em;
+  }
+}
