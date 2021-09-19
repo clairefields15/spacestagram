@@ -3,11 +3,14 @@ import './Card.css';
 
 export const Card = ({ photo, handleLike, liked }) => {
   const [showMoreText, setShowMoreText] = useState(false);
-  const [hover, setHover] = useState(false);
+  const [breakHeart, setBreakHeart] = useState(0);
+  const [bounce, setBounce] = useState(0);
 
   const handleClick = e => {
     e.preventDefault();
     const id = e.target.closest('article').id;
+    setBounce(0);
+    setBreakHeart(0);
     handleLike(id);
   };
 
@@ -27,27 +30,31 @@ export const Card = ({ photo, handleLike, liked }) => {
         {!liked && (
           <button
             className='like-heart'
-            onClick={e => handleClick(e)}
+            onClick={() => setBounce(1)}
+            onAnimationEnd={e => handleClick(e)}
+            bounce={bounce}
             aria-label='Click to like post'
           >
-            <i class='far fa-heart'></i>
+            <i className='far fa-heart'></i>
           </button>
         )}
         {liked && (
           <button
             className='like-heart liked'
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onClick={e => handleClick(e)}
+            onClick={() => {
+              setBreakHeart(1);
+            }}
+            break={breakHeart}
+            onAnimationEnd={e => handleClick(e)}
             aria-label='Click to unlike post'
           >
-            {!hover && <i class='fas fa-heart'></i>}{' '}
-            {hover && <i class='fas fa-heart-broken'></i>}
+            {!breakHeart && <i className='fas fa-heart'></i>}
+            {!!breakHeart && <i className='fas fa-heart-broken'></i>}
           </button>
         )}
         <h2>{photo.title}</h2>
-        <p>{photo.date}</p>
-        {photo.copyright && <p>Photo by: {photo.copyright}</p>}
+        {photo.copyright && <h3>Photo by: {photo.copyright}</h3>}
+        <p className='date'>{photo.date}</p>
         <p>
           {!showMoreText && (
             <>

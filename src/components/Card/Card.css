@@ -36,7 +36,45 @@
   background-color: inherit;
   border: none;
   color: black;
-  font-size: 1em;
+  font-size: 1.5em;
+}
+
+.like-heart[bounce='1'] {
+  animation: bounce 0.7s 1;
+}
+
+@keyframes bounce {
+  25% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.liked[break='1'] {
+  animation: break 0.7s 1;
+}
+
+@keyframes break {
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .liked {
@@ -47,6 +85,13 @@
   background-color: inherit;
   border: none;
   color: #303030;
+}
+
+.date {
+  margin-bottom: 0.5em;
+}
+.card-container h2 {
+  margin-bottom: 0.5em;
 }
 
 @media screen and (min-width: 480px) {
