@@ -19,6 +19,27 @@ export const Card = ({ photo, handleLike, liked }) => {
     setShowMoreText(true);
   };
 
+  const formatDate = date => {
+    let split = date.split('-');
+    let months = {
+      '01': 'January',
+      '02': 'February',
+      '03': 'March',
+      '04': 'April',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July',
+      '08': 'August',
+      '09': 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December'
+    };
+    let month = months[split[1]];
+    let day = split[2].replace(/^0+/, '');
+    return `${month} ${day}, ${split[0]}`;
+  };
+
   return (
     <article className='card-container' id={photo.url}>
       {photo.hdurl && (
@@ -54,7 +75,11 @@ export const Card = ({ photo, handleLike, liked }) => {
         )}
         <h2>{photo.title}</h2>
         {photo.copyright && <h3>Photo by: {photo.copyright}</h3>}
-        <p className='date'>{photo.date}</p>
+        {!photo.copyright && (
+          <h3>{"Brought to you by NASA's Astronomy Photo of the Day API "}</h3>
+        )}
+
+        <p className='date'>{formatDate(photo.date)}</p>
         <p>
           {!showMoreText && (
             <>
