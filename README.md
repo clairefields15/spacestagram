@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Spacestagram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployed [site](https://spacestagram2021.netlify.app/)
 
-## Available Scripts
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f9b9f6a8-c0dd-46c5-8a63-189bf58b6c21/deploy-status)](https://app.netlify.com/sites/spacestagram2021/deploys)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Spacestagram is a webpage that pulls images from NASA's Astronomy Picture of the Day API and displays them ~a la instagram for users to like and unlike their favorite photos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![desktop view](https://user-images.githubusercontent.com/79113236/133945785-ceb7f906-995c-4792-a7b5-47c73e21f110.gif)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Development
 
-### `npm test`
+When I was first given this challenge, I began by crafting user stories, issues, and a [project board](https://github.com/clairefields15/spacestagram/projects/1) for each requirement. Design inspiration came (naturally) from instagram for the UI. The one column layout, even on desktop, allows for maximum image size and a "...more" button after 120 characters of each caption ensures that the focus is primarily on the photos. The like and unlike actions are both animated. The application is responsive across all screen sizes and uses semantic HTML and best-practices for accessibility throughout, including aria-accessible labels for the heart icon buttons.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![mobile view](https://user-images.githubusercontent.com/79113236/133945797-850548ba-6482-465c-a43f-1c8c44ed90e4.gif)
 
-### `npm run build`
+Careful consideration was given to error handling and loading states in the UI so that our space travellers are (hopefully) never frustrated by their experience on spacestagram.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Lastly, the application is deployed on Netlify and the free API key is stored as an environment variable on Netlify for extra security.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-React
+-React Router
+-Deployed on Netlify
 
-### `npm run eject`
+## Contributors
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Claire Fields [Github](https://github.com/clairefields15/) and [LinkedIn](https://www.linkedin.com/in/clairefields15/)
