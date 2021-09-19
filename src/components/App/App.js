@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { fetchPhotos } from '../../utils/apiCalls';
 import { Cards } from '../Cards/Cards';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
+import rocket from '../../images/loading-rocket.gif';
 import './App.css';
 
 export const App = () => {
@@ -40,7 +41,12 @@ export const App = () => {
         <h1>spacestagram</h1>
       </header>
       {!!errorMessage && <ErrorComponent message={errorMessage} />}
-      {!errorMessage && loading && <p>Loading photos...</p>}
+      {!errorMessage && loading && (
+        <div className='loading'>
+          <img src={rocket} alt='rocket launch gif' />
+          <p>Loading photos...</p>
+        </div>
+      )}
       {!errorMessage && !loading && (
         <Switch>
           <Route
@@ -50,7 +56,11 @@ export const App = () => {
               <Cards photos={photos} handleLike={handleLike} liked={liked} />
             )}
           />
-          <Route render={() => <p>Sorry that page doesn't exist</p>} />
+          <Route
+            render={() => (
+              <ErrorComponent message={"Sorry that page doesn't exist"} />
+            )}
+          />
         </Switch>
       )}
     </main>
